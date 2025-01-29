@@ -11,6 +11,7 @@ struct process {
     int pid;             // Process ID
     int state;           // Process state: PROC_UNUSED or PROC_RUNNABLE
     vaddr_t sp;          // Stack pointer
+    uint32_t *page_table;
     uint8_t stack[8192]; // Kernel stack
 };
 
@@ -72,3 +73,10 @@ struct trap_frame {
         uint32_t __tmp = (value);                                              \
         __asm__ __volatile__("csrw " #reg ", %0" ::"r"(__tmp));                \
     } while (0)
+
+#define SATP_SV32 (1u << 31)
+#define PAGE_V    (1 << 0)   // "Valid" bit (entry is enabled)
+#define PAGE_R    (1 << 1)   // Readable
+#define PAGE_W    (1 << 2)   // Writable
+#define PAGE_X    (1 << 3)   // Executable
+#define PAGE_U    (1 << 4)   // User (accessible in user mode)
