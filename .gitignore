@@ -1,2 +1,6 @@
 kernel.map
 kernel.elf
+shell.bin
+shell.bin.o
+shell.map
+shell.elf
