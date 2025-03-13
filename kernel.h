@@ -6,6 +6,7 @@
 
 #define PROC_UNUSED   0   // Unused process control structure
 #define PROC_RUNNABLE 1   // Runnable process
+#define PROC_EXITED   2
 
 struct process {
     int pid;             // Process ID
@@ -82,6 +83,7 @@ struct trap_frame {
 #define PAGE_U    (1 << 4)   // User (accessible in user mode)
 // switch to U-Mode
 #define SSTATUS_SPIE (1 << 5)
+#define SCAUSE_ECALL 8
 
 // The base virtual address of an application image. This needs to match the
 // starting address defined in `user.ld`.
