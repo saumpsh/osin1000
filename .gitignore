@@ -4,3 +4,5 @@ shell.bin
 shell.bin.o
 shell.map
 shell.elf
+qemu.log
+.vscode/
